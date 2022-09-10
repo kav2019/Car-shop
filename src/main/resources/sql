@@ -1,0 +1,26 @@
+create table Car(
+    id serial primary key ,
+    name varchar not null,
+    dateManufacturing int check (age > 0),
+    price int check (price > 0),
+    description varchar,
+    picAvatar varchar(100),
+    pics varchar(100),
+    user_id int REFERENCES user(id) ON DELETE CASCADE
+);
+
+create table User(
+    id serial primary key ,
+    name varchar not null,
+    adress varchar,
+    phoneNumber int,
+    picAvatar varchar(100)
+);
+
+create table orders(
+    id serial primary key ,
+    user_id int REFERENCES user(id),
+    car_id int REFERENCES car(id),
+    unique(user_id, car_id)
+);
+
