@@ -1,19 +1,41 @@
 package ru.kovshov.shop.model;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "name")
     private String name;
-    private Adress adress;
+
+    @Column(name = "adress")
+    private String adress;
+
+    @Column(name = "phoneNumber")
     private long phoneNumber;
+
+    @Column(name = "picAvatar")
     private String picAvatar;
+
+    @OneToMany(mappedBy = "user")
     private List<Car> cars;
+
+
+
+    private boolean isAuth;
+
+
 
     public User() {
     }
 
-    public User(String name, Adress adress, long phoneNumber, String picAvatar) {
+    public User(String name, String adress, long phoneNumber, String picAvatar) {
         this.name = name;
         this.adress = adress;
         this.phoneNumber = phoneNumber;
@@ -36,11 +58,11 @@ public class User {
         this.name = name;
     }
 
-    public Adress getAdress() {
+    public String getAdress() {
         return adress;
     }
 
-    public void setAdress(Adress adress) {
+    public void setAdress(String adress) {
         this.adress = adress;
     }
 
@@ -66,5 +88,13 @@ public class User {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public boolean isAuth() {
+        return isAuth;
+    }
+
+    public void setAuth(boolean auth) {
+        isAuth = auth;
     }
 }

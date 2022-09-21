@@ -1,16 +1,38 @@
 package ru.kovshov.shop.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "car")
 public class Car {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "dateManufacturing")
     private int dateManufacturing;
+
+    @Column(name = "price")
     private int price;
+
+    @Column(name = "description")
     private String description;
 
+    @Column(name = "picAvatar")
     private String picAvatar;
 
+    @Column(name = "pics")
     private String pics;
+
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
     public Car(String name, int dateManufacturing, int price, String description) {
@@ -20,12 +42,14 @@ public class Car {
         this.description = description;
     }
 
+    public Car() {
+    }
+
     public int getId() {
         return id;
     }
 
-    public Car() {
-    }
+
 
     public String getName() {
         return name;
@@ -73,6 +97,18 @@ public class Car {
 
     public void setPics(String pics) {
         this.pics = pics;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }

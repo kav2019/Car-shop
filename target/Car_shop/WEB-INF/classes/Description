@@ -1,0 +1,4 @@
+Class:
+    - Car (id, name, dateManufacturing, price, description, picAvatar, pics)
+    - Users
+    - Order

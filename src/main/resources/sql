@@ -1,15 +1,17 @@
+drop table if exist Car;
 create table Car(
     id serial primary key ,
     name varchar not null,
-    dateManufacturing int check (age > 0),
+    dateManufacturing int check (dateManufacturing > 0),
     price int check (price > 0),
     description varchar,
     picAvatar varchar(100),
     pics varchar(100),
-    user_id int REFERENCES user(id) ON DELETE CASCADE
+    user_id int REFERENCES users(id) ON DELETE CASCADE
 );
 
-create table User(
+drop table if exist User;
+create table Users(
     id serial primary key ,
     name varchar not null,
     adress varchar,
@@ -17,10 +19,22 @@ create table User(
     picAvatar varchar(100)
 );
 
+drop table if exist Auth;
+create table Auth(
+    id serial primary key ,
+    login varchar not null,
+    password varchar,
+    user_id int REFERENCES user(id)
+);
+
+
+drop table if exist Orders;
 create table orders(
     id serial primary key ,
     user_id int REFERENCES user(id),
     car_id int REFERENCES car(id),
     unique(user_id, car_id)
 );
+
+create database car_shop;
 
