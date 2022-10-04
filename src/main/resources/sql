@@ -10,25 +10,26 @@ create table Car(
     user_id int REFERENCES users(id) ON DELETE CASCADE
 );
 
-drop table if exist User;
+drop table if exists User;
 create table Users(
     id serial primary key ,
     name varchar not null,
+    password varchar not null,
     adress varchar,
     phoneNumber int,
     picAvatar varchar(100)
 );
 
-drop table if exist Auth;
+drop table if exists Auth;
 create table Auth(
     id serial primary key ,
     login varchar not null,
     password varchar,
-    user_id int REFERENCES user(id)
+    user_id int REFERENCES users(id)
 );
 
 
-drop table if exist Orders;
+drop table if exists Orders;
 create table orders(
     id serial primary key ,
     user_id int REFERENCES user(id),

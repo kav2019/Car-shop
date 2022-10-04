@@ -8,19 +8,20 @@
 <p>Authorization</p>
 <br>
 <p>Authorization</p>
-<!--
-<form th:method="patch" th:action="@{/auth}">
-    <label for="login">Enter login: </label>
-    <input type="text"  id="login">
 
+<form th:method="patch" th:action="@{/shop/login}" th:object="${loginObj}">
+    <label for="login">Enter login: </label>
+    <input type="text" th:field="*{login}" id="login">
     <br/>
-    <label for="password">Enter password: </label>
-    <input type="text"  id="password">
+    <label for="password">Enter [password]: </label>
+    <input type="text" th:field="*{password}" id="password">
+    <br/>
+
     <input type="submit" value="Save"/>
 </form>
--->
+
 <br>
-<a th:href="@{/registration}" th:text="Registration">Registration</a>
+<a th:href="@{/shop}" th:text="Board">Board</a>
 
 </body>
 </html>

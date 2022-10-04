@@ -21,4 +21,10 @@ public class CarService {
     public List<Car> findAll(){
         return carRepository.findAll();
     }
+
+    public void carSave(Car car){
+        carRepository.save(car);
+    }
+
+
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+<a th:href="@{/shop/auth}" th:text="Authorization">Authorization</a>
+<a th:href="@{/shop}" th:text="Board">Board</a>
+
+<br>
+<form th:method="patch" th:action="@{/shop/add_car}" th:object="${car}">
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name">
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">error</div>
+    <br/>
+
+    <label for="dateManufacturing">Enter Date Manufacturing: </label>
+    <input type="text" th:field="*{dateManufacturing}" id="dateManufacturing">
+    <div style="color:red" th:if="${#fields.hasErrors('dateManufacturing')}" th:errors="*{dateManufacturing}">error</div>
+    <br/>
+
+    <label for="price">Enter price: </label>
+    <input type="text" th:field="*{price}" id="price">
+    <div style="color:red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">error</div>
+    <br/>
+
+    <label for="description">Enter description: </label>
+    <input type="text" th:field="*{description}" id="description">
+    <div style="color:red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">error</div>
+    <br/>
+
+    <label for="pics">Enter pics: </label>
+    <input type="text" th:field="*{pics}" id="pics">
+    <div style="color:red" th:if="${#fields.hasErrors('pics')}" th:errors="*{pics}">error</div>
+
+    <input type="submit" value="Save"/>
+</form>
+</body>
+</html>

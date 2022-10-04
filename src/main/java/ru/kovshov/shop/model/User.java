@@ -14,6 +14,11 @@ public class User {
     @Column(name = "name")
     private String name;
 
+
+
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "adress")
     private String adress;
 
@@ -28,6 +33,7 @@ public class User {
 
 
 
+
     private boolean isAuth;
 
 
@@ -35,8 +41,9 @@ public class User {
     public User() {
     }
 
-    public User(String name, String adress, long phoneNumber, String picAvatar) {
+    public User(String name, String password, String adress, long phoneNumber, String picAvatar) {
         this.name = name;
+        this.password = password;
         this.adress = adress;
         this.phoneNumber = phoneNumber;
         this.picAvatar = picAvatar;
@@ -96,5 +103,13 @@ public class User {
 
     public void setAuth(boolean auth) {
         isAuth = auth;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
