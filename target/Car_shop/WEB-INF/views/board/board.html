@@ -14,13 +14,12 @@
 
 
 <p>Cars:  </p>
-<!--
 <div th:each = "car : ${cars}">
-    <a th:href="@{/car/{id}(id=${car.getId()})}" th:text="${car.getName()}">name</a>
+    <a th:href="@{/shop/car/{id}(id=${car.getId()})}" th:text="${car.getName()}">name</a>
 </div>
 
 <br>
--->
+
 <br>
 <a th:href="@{/shop/add_car}" >car add</a>
 

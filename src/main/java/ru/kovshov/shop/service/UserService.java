@@ -18,11 +18,16 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void saveUser(User user){
+    @Transactional
+    public void saveUser(User user){//сохранение юзера
         userRepository.save(user);
     }
 
-    public boolean login(Login login){
+    public boolean login(Login login){ //авторизова ли
         return true;
+    }
+
+    public User findUser(int id){ //находим пользователя
+        return userRepository.findById(id).orElse(null);
     }
 }

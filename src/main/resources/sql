@@ -10,7 +10,9 @@ create table Car(
     user_id int REFERENCES users(id) ON DELETE CASCADE
 );
 
-drop table if exists User;
+insert into Car (name, dateManufacturing, price, description, picAvatar, pics, user_id) values ('IvanAuto', 1991, 1992, 'aaa', 'i1', 'ddd', 1);
+
+drop table if exists Users cascade;
 create table Users(
     id serial primary key ,
     name varchar not null,
@@ -19,6 +21,8 @@ create table Users(
     phoneNumber int,
     picAvatar varchar(100)
 );
+
+insert into Users (name, password, adress, phoneNumber, picAvatar) values ('Ivan', 1991, 'i1', 1111, 'i1');
 
 drop table if exists Auth;
 create table Auth(
@@ -38,4 +42,8 @@ create table orders(
 );
 
 create database car_shop;
+
+insert into User (name, yearBorn) values ('Anton', 1991);
+
+delete from car where id = 2;
 

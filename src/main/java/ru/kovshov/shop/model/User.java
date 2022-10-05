@@ -14,8 +14,6 @@ public class User {
     @Column(name = "name")
     private String name;
 
-
-
     @Column(name = "password")
     private String password;
 
@@ -34,7 +32,7 @@ public class User {
 
 
 
-    private boolean isAuth;
+//    private boolean isAuth;
 
 
 
@@ -97,13 +95,13 @@ public class User {
         this.cars = cars;
     }
 
-    public boolean isAuth() {
-        return isAuth;
-    }
-
-    public void setAuth(boolean auth) {
-        isAuth = auth;
-    }
+//    public boolean isAuth() {
+//        return isAuth;
+//    }
+//
+//    public void setAuth(boolean auth) {
+//        isAuth = auth;
+//    }
 
     public String getPassword() {
         return password;

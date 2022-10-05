@@ -3,10 +3,7 @@ package ru.kovshov.shop.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.kovshov.shop.model.Car;
 import ru.kovshov.shop.model.Login;
 import ru.kovshov.shop.model.User;
@@ -57,7 +54,7 @@ public class Controllers {
         return "redirect:/shop";
     }
 
-    @GetMapping("/add_car")
+    @GetMapping("/add_car") // Страница создания авомобиля
     public String addCar(@ModelAttribute("car")Car car){ //Страница формы добавления автомобиля
         return "car/add_car";
     }
@@ -65,7 +62,20 @@ public class Controllers {
     @PatchMapping("/add_car") // Создание ного автомобиля и добавление в бд
     public String saveCar(@ModelAttribute("car") Car car){
         carService.carSave(car);
+//        Car car1 = new Car();
+//        car1.setName("One");
+//        car1.setDateManufacturing(2000);
+//
         return "redirect:/shop";
+    }
+
+    @GetMapping("/car/{id}") // Страница отображения одного авомобиля
+    public String showCar(@PathVariable("id") int id, Model model){
+        Car car = carService.findOne(id);
+        model.addAttribute("car", car) ;
+        model.addAttribute("owner", car.getUser());//подключить когда реализван юзер
+//        model.addAttribute("owner", new User("Ivan", "String password", "String adress", 8515L, "String picAvatar")); //удалить
+        return "car/show_car";
     }
 
 

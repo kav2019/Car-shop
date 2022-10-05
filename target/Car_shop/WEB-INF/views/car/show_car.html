@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${car.getName()}">One car</title>
+</head>
+<body>
+<p>Car:</p>
+<p th:text="'Name: '+${car.getName()}" >Name</p>
+<p th:text="'Date Manufacturing: '+${car.getDateManufacturing()}" >Manufacturing</p>
+<p th:text="'Price: '+${car.getPics()}">Price</p>
+<p th:text="'Description: '+${car.getDescription()}">Description</p>
+<p th:text="'Owner: '+${owner.getName()}">Owner</p>
+
+
+
+</body>
+<br>
+<a th:href="@{/shop}" th:text="Board">Board</a>
+</html>
